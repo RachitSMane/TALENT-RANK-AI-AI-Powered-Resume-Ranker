@@ -10,6 +10,7 @@ import Features from './sections/Features';
 import HowItWorks from './sections/HowItWorks';
 import LiveDemo from './sections/LiveDemo';
 import Testimonials from './sections/Testimonials';
+import Pricing from './sections/Pricing';
 import CTA from './sections/CTA';
 import Footer from './sections/Footer';
 
@@ -32,7 +33,7 @@ function App() {
 
     lenisRef.current = lenis;
 
-    // CONNECT GSAP + LENIS
+    // CONNECT LENIS + GSAP
     lenis.on('scroll', ScrollTrigger.update);
 
     const update = (time: number) => {
@@ -43,7 +44,7 @@ function App() {
 
     gsap.ticker.lagSmoothing(0);
 
-    // GLOBAL BG ANIMATION
+    // GLOBAL BACKGROUND ANIMATION
     gsap.to('body', {
       backgroundPosition: '200% 200%',
       duration: 18,
@@ -53,8 +54,11 @@ function App() {
     });
 
     return () => {
+
       lenis.destroy();
+
       gsap.ticker.remove(update);
+
     };
 
   }, []);
@@ -89,11 +93,12 @@ function App() {
       {/* MAIN CONTENT */}
       <main className="relative z-10">
 
+        {/* HERO */}
         <Hero />
 
         <div className="relative">
 
-          {/* BACKGROUND GLOW */}
+          {/* GLOBAL GLOW */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -108,6 +113,7 @@ function App() {
             }}
           />
 
+          {/* SECTIONS */}
           <TrustedBy />
 
           <Features />
@@ -117,6 +123,8 @@ function App() {
           <LiveDemo />
 
           <Testimonials />
+
+          <Pricing />
 
           <CTA />
 
@@ -128,6 +136,7 @@ function App() {
       <Footer />
 
     </div>
+
   );
 }
 
